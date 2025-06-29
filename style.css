@@ -1,0 +1,56 @@
+/* Define as variáveis de cor para o Tema Claro (padrão) */
+:root {
+    --cor-gradiente-inicio: #1e3a8a;
+    --cor-gradiente-fim: #3b82f6;
+    --cor-timeline-e-underline: #3b82f6;
+    --sombra-projeto: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Sobrescreve as variáveis quando o <html> tiver a classe 'dark' */
+html.dark {
+    --cor-gradiente-inicio: #111827;
+    --cor-gradiente-fim: #1d4ed8;
+    --cor-timeline-e-underline: #60a5fa;
+    --sombra-projeto: 0 10px 25px rgba(255, 255, 255, 0.05);
+}
+
+/* Agora, usamos as variáveis no nosso CSS customizado. */
+.gradient-bg {
+    background: linear-gradient(135deg, var(--cor-gradiente-inicio) 0%, var(--cor-gradiente-fim) 100%);
+}
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra-projeto);
+}
+.skill-bar {
+    height: 8px;
+    border-radius: 4px;
+}
+.timeline-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 32px;
+    height: calc(100% - 32px);
+    width: 2px;
+    background: var(--cor-timeline-e-underline);
+}
+.nav-link {
+    position: relative;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--cor-timeline-e-underline);
+    transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+    width: 100%;
+}
+.active::after {
+    width: 100%;
+}
